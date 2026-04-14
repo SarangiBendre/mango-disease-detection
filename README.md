@@ -1,74 +1,74 @@
-# 🌿 Mango Leaf Disease Detection using AI
+# 🌿 Mango Leaf Disease Detection
 
-## 📌 Overview
-
-This project is a Computer Vision-based web application that detects diseases in mango leaves using a trained Deep Learning model. It helps identify plant health status from images, making it useful for agriculture and students.
+An AI-powered web application to detect **Anthracnose disease** in mango leaves using **Deep Learning (PyTorch)** and a modern web interface.
 
 ---
 
-## 🎯 Objective
+## 🌐 Live Demo
 
-To develop an intelligent system that:
-
-* Detects mango leaf diseases from images
-* Classifies leaves as Healthy or Anthracnose
-* Displays prediction with confidence score
-* Provides an easy-to-use web interface
+👉 https://mango-disease-detection.onrender.com
 
 ---
 
-## 🧠 Technologies Used
+## 🚀 Features
 
-* Python
-* TensorFlow (Deep Learning)
+* 📂 Drag & Drop Image Upload
+* 🔍 Disease Detection (Healthy / Anthracnose)
+* 📊 Confidence Score Display
+* 🎨 Modern UI using HTML, CSS, JavaScript
+* ⚡ Fast Prediction using Transfer Learning
+
+---
+
+## 🧠 Tech Stack
+
+* Python (PyTorch)
+* Flask (Backend)
 * OpenCV (Image Processing)
-* Flask (Web Framework)
-* HTML, CSS (Frontend)
+* HTML, CSS, JavaScript (Frontend)
 
 ---
 
-## ⚙️ Features
-
-* Upload mango leaf image
-* Automatic image preprocessing
-* Disease prediction using trained CNN model
-* Confidence score display
-* Clean and interactive UI
-* Loading animation for better UX
-
----
-
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```
-MangoLeafDiseaseDetection/
+mango-disease-detection/
+│
+├── dataset/
+├── models/
+├── static/
+├── templates/
+├── utils/
 │
 ├── app.py
-├── mango_model.h5
-├── templates/
-│   └── index.html
-├── static/
-│   └── style.css
-└── README.md
+├── main.py
+├── requirements.txt
+├── README.md
 ```
 
 ---
 
-## 🚀 How to Run
+## ▶️ How to Run Locally
 
-### 1️⃣ Install dependencies
+### 1. Install dependencies
 
 ```
-pip install tensorflow==2.10.0 flask numpy pillow opencv-python
+pip install -r requirements.txt
 ```
 
-### 2️⃣ Run the application
+### 2. Train the model
+
+```
+python main.py
+```
+
+### 3. Run the web app
 
 ```
 python app.py
 ```
 
-### 3️⃣ Open in browser
+### 4. Open in browser
 
 ```
 http://127.0.0.1:5000/
@@ -76,52 +76,28 @@ http://127.0.0.1:5000/
 
 ---
 
-## 📊 Output
+## 📊 Model Details
 
-* Predicted Disease (Healthy / Anthracnose)
-* Confidence Percentage
-* Uploaded Image Preview
-
----
-
-## 🧪 Dataset
-
-* Custom dataset (self-collected images)
-* 16 images for Healthy
-* 16 images for Anthracnose
-* Used for training CNN model
+* Pretrained **MobileNetV2**
+* Transfer Learning with fine-tuning
+* Data Augmentation for small dataset
+* Achieves good accuracy on test data
 
 ---
 
-## ⚠️ Limitations
+## ⚠️ Note
 
-* Small dataset size
-* Limited to two classes
-* Works best on clear leaf images
-
----
-
-## 🔮 Future Enhancements
-
-* Add more diseases
-* Increase dataset size
-* Deploy optimized model online
-* Mobile application integration
-
----
-
-## 🏆 Conclusion
-
-This project demonstrates how AI and Computer Vision can be applied to plant disease detection. It provides a simple and effective solution for identifying mango leaf diseases.
+* Dataset is small (~60 images), so real-world accuracy may vary
+* Model may overfit due to limited data
 
 ---
 
 ## 👩‍💻 Author
 
-Sarangi Bendre
+**Sarangi Bendre**
 
 ---
 
-## 📌 Note
+## ⭐ Support
 
-This project is implemented locally due to compatibility constraints of TensorFlow on cloud platforms.
+If you like this project, give it a ⭐ on GitHub!
