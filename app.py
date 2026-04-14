@@ -1,31 +1,45 @@
-import gradio as gr
-import tensorflow as tf
-import numpy as np
-from tensorflow.keras.preprocessing import image
+from flask import Flask, render_template, request, jsonify
+import torch
+import json
+import os
+from models.model import get_model
+from utils.predict import predict_image
+
+app = Flask(__name__)
+
+UPLOAD_FOLDER = "static/uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Load model
-model = tf.keras.models.load_model("mango_model.h5")
+model = get_model()
+model.load_state_dict(torch.load("models/mango_model.pth", map_location=torch.device('cpu')))
+model.eval()
 
-classes = ['anthracnose', 'healthy']
+# Load class names
+with open("models/classes.json", "r") as f:
+    class_names = json.load(f)
 
-def predict(img):
-    img = img.resize((224, 224))
-    img_array = np.array(img) / 255.0
-    img_array = np.expand_dims(img_array, axis=0)
+@app.route('/')
+def home():
+    return render_template("index.html")
 
-    prediction = model.predict(img_array)
-    class_name = classes[np.argmax(prediction)]
-    confidence = float(np.max(prediction)) * 100
+@app.route('/predict', methods=['POST'])
+def predict():
+    file = request.files['file']
 
-    return f"{class_name} ({confidence:.2f}%)"
+    if file:
+        filepath = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(filepath)
 
-# Gradio UI
-interface = gr.Interface(
-    fn=predict,
-    inputs=gr.Image(type="pil"),
-    outputs="text",
-    title="🌿 Mango Disease Detection",
-    description="Upload a mango leaf image to detect disease"
-)
+        label, confidence = predict_image(filepath, model, class_names)
 
-interface.launch()
+        return jsonify({
+            "label": label,
+            "confidence": round(confidence, 2),
+            "image_path": filepath
+        })
+
+    return jsonify({"error": "No file uploaded"})
+
+if __name__ == '__main__':
+    app.run(debug=True)

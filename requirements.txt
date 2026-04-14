@@ -1,4 +1,6 @@
-gradio
-tensorflow
-numpy
+torch
+torchvision
+flask
 pillow
+opencv-python
+numpy

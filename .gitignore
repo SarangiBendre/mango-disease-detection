@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+models/mango_model.pth
+models/classes.json
+static/uploads/
+.env

@@ -1,43 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Mango Disease Detection</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
 <div class="container">
-    <div class="card">
-        <h1>🌿 Mango Leaf Disease Detection</h1>
+    <h1>🌿 Mango Leaf Anthracnose Disease Detection</h1>
+    <p class="subtitle">AI-powered plant health analysis</p>
 
-        <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" required>
-            <button type="submit" id="detectBtn">Detect Disease</button>
-        </form>
+    <!-- Upload Box -->
+    <div class="upload-area" id="drop-area">
+        <p>📂 Drag & Drop Image Here</p>
+        <p>or</p>
+        <input type="file" id="fileInput" hidden>
+        <button onclick="document.getElementById('fileInput').click()">Choose File</button>
+    </div>
 
-        <!-- Loading -->
-        <div id="loading" style="display:none;">
-            <div class="spinner"></div>
-            <p>Processing Image...</p>
-        </div>
+    <!-- Preview -->
+    <div class="preview">
+        <img id="previewImage" src="">
+    </div>
 
-        {% if prediction %}
-        <div class="result">
-            <img src="{{ img_path }}" class="preview">
-            <h2>Disease: {{ prediction }}</h2>
-            <h3>Confidence: {{ confidence }}%</h3>
-        </div>
-        {% endif %}
+    <!-- Loader -->
+    <div id="loader" class="loader hidden"></div>
+
+    <!-- Result -->
+    <div id="resultCard" class="result-card hidden">
+        <h2 id="resultText"></h2>
+        <p id="confidenceText"></p>
     </div>
 </div>
 
-<script>
-document.getElementById("uploadForm").addEventListener("submit", function() {
-    document.getElementById("loading").style.display = "block";
-    document.getElementById("detectBtn").disabled = true;
-    document.getElementById("detectBtn").innerText = "Processing...";
-});
-</script>
-
+<script src="/static/script.js"></script>
 </body>
 </html>
