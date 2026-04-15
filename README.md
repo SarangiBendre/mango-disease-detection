@@ -1,13 +1,16 @@
 # 🌿 Mango Leaf Anthracnose Disease Detection
 
 This project detects **anthracnose disease in mango leaves** using **Deep Learning and Computer Vision**.
-It provides accurate predictions along with confidence scores and preventive solutions.
+It provides accurate predictions along with confidence scores and preventive solutions for better crop management.
 
 ---
 
 ## 🚀 Live Demo
 
 🌐 https://mango-disease-detection.onrender.com
+
+> ⚠️ **Note:**
+> The live demo is hosted on Render (free tier), so it may take a few seconds to respond during the first request or prediction due to limited resources.
 
 ---
 
@@ -23,26 +26,25 @@ It provides accurate predictions along with confidence scores and preventive sol
 * 🔍 Detect disease (Healthy / Anthracnose)
 * 📊 Confidence score display
 * 🌿 Solution & prevention suggestions
-* 📱 Mobile-friendly UI
+* 📱 Mobile-friendly and responsive UI
 
 ---
 
 ## 🧠 Tech Stack
 
-* Python (PyTorch)
-* Flask
-* OpenCV
-* HTML, CSS, JavaScript
+* **Backend:** Python (PyTorch, Flask)
+* **Frontend:** HTML, CSS, JavaScript
+* **Libraries:** OpenCV, Torchvision
 
 ---
 
 ## ⚙️ How It Works
 
 1. User uploads a mango leaf image
-2. Image is preprocessed (resized, normalized)
+2. Image is preprocessed (resizing and normalization)
 3. Deep learning model analyzes the image
 4. Prediction is generated with confidence score
-5. If disease detected → solution is displayed
+5. If disease is detected → solution is displayed
 
 ---
 
@@ -79,7 +81,7 @@ MangoLeafDiseaseDetection/
 * Model: CNN (MobileNetV2-based)
 * Framework: PyTorch
 * Classes: Healthy, Anthracnose
-* Accuracy: ~90%+
+* Accuracy: ~90%
 
 ---
 
@@ -87,26 +89,26 @@ MangoLeafDiseaseDetection/
 
 * Limited dataset (150 images)
 * May misclassify similar patterns
-* Works best with clear leaf images
+* Performance depends on image quality
 
 ---
 
 ## 🔮 Future Scope
 
-* Add more diseases
-* Improve dataset size
-* Mobile app integration
-* Real-time detection using camera
+* Add detection for more plant diseases
+* Increase dataset size for better accuracy
+* Develop mobile application
+* Enable real-time detection using camera
 
 ---
 
 ## 🌱 Real-World Impact
 
-This system helps farmers:
+This system helps farmers to:
 
-* Detect disease early
-* Take preventive actions
-* Improve crop yield
+* Detect diseases at an early stage
+* Take preventive actions quickly
+* Improve crop yield and quality
 
 ---
 
@@ -118,4 +120,4 @@ This system helps farmers:
 
 ## ⭐ Support
 
-If you like this project, give it a ⭐ on GitHub!
+If you found this project useful, consider giving it a ⭐ on GitHub!
