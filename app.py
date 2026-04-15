@@ -7,11 +7,12 @@ from models.model import get_model
 from utils.predict import predict_image
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 
 UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# 🔥 Load model ONLY ONCE (correct)
+# 🔥 Load model ONLY ONCE
 model = get_model()
 model.load_state_dict(torch.load("models/mango_model.pth", map_location=torch.device('cpu')))
 model.eval()
@@ -32,21 +33,20 @@ def predict():
         if not file:
             return jsonify({"error": "No file uploaded"})
 
-        # 🔥 Save file safely
+        # Save file
         filepath = os.path.join(UPLOAD_FOLDER, "temp.jpg")
         file.save(filepath)
 
-        # 🔥 Reduce image size BEFORE prediction (VERY IMPORTANT)
+        # 🔥 Resize image (IMPORTANT for speed)
         img = Image.open(filepath).convert("RGB")
-        img = img.resize((256, 256))  # reduce heavy image
+        img = img.resize((256, 256))
         img.save(filepath)
 
-        print("Prediction started...")  # debug
+        print("Prediction started...")
 
-        # 🔥 Predict
         label, confidence = predict_image(filepath, model, class_names)
 
-        print("Prediction done:", label)  # debug
+        print("Prediction done:", label)
 
         return jsonify({
             "label": label,
@@ -54,10 +54,5 @@ def predict():
         })
 
     except Exception as e:
-        print("Error:", str(e))  # logs in Render
+        print("Error:", str(e))
         return jsonify({"error": str(e)})
-
-# 🔥 Required for Render
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
