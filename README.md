@@ -1,98 +1,116 @@
-# 🌿 Mango Leaf Disease Detection
+# 🌿 Mango Leaf Anthracnose Disease Detection
 
-An AI-powered web application to detect **Anthracnose disease** in mango leaves using **Deep Learning (PyTorch)** and a modern web interface.
-
----
-
-## 🌐 Live Demo
-
-👉 https://mango-disease-detection.onrender.com
+This project detects **anthracnose disease in mango leaves** using **Deep Learning and Computer Vision**.
+It provides accurate predictions along with confidence scores and preventive solutions.
 
 ---
 
-## 🚀 Features
+## 🚀 Live Demo
 
-* 📂 Drag & Drop Image Upload
-* 🔍 Disease Detection (Healthy / Anthracnose)
-* 📊 Confidence Score Display
-* 🎨 Modern UI using HTML, CSS, JavaScript
-* ⚡ Fast Prediction using Transfer Learning
+🌐 https://mango-disease-detection.onrender.com
+
+---
+
+## 🎥 Demo Video
+
+▶️ https://youtu.be/f4g_xYH7dqY
+
+---
+
+## 📌 Features
+
+* 📷 Upload mango leaf image
+* 🔍 Detect disease (Healthy / Anthracnose)
+* 📊 Confidence score display
+* 🌿 Solution & prevention suggestions
+* 📱 Mobile-friendly UI
 
 ---
 
 ## 🧠 Tech Stack
 
 * Python (PyTorch)
-* Flask (Backend)
-* OpenCV (Image Processing)
-* HTML, CSS, JavaScript (Frontend)
+* Flask
+* OpenCV
+* HTML, CSS, JavaScript
 
 ---
 
-## 📁 Project Structure
+## ⚙️ How It Works
+
+1. User uploads a mango leaf image
+2. Image is preprocessed (resized, normalized)
+3. Deep learning model analyzes the image
+4. Prediction is generated with confidence score
+5. If disease detected → solution is displayed
+
+---
+
+## 📂 Project Structure
 
 ```
-mango-disease-detection/
+MangoLeafDiseaseDetection/
 │
-├── dataset/
 ├── models/
-├── static/
-├── templates/
+│   ├── mango_model.pth
+│   ├── classes.json
+│   └── model.py
+│
 ├── utils/
+│   └── predict.py
+│
+├── static/
+│   ├── style.css
+│   ├── script.js
+│   └── uploads/
+│
+├── templates/
+│   └── index.html
 │
 ├── app.py
-├── main.py
 ├── requirements.txt
-├── README.md
+└── Procfile
 ```
 
 ---
 
-## ▶️ How to Run Locally
+## 🧪 Model Details
 
-### 1. Install dependencies
-
-```
-pip install -r requirements.txt
-```
-
-### 2. Train the model
-
-```
-python main.py
-```
-
-### 3. Run the web app
-
-```
-python app.py
-```
-
-### 4. Open in browser
-
-```
-http://127.0.0.1:5000/
-```
+* Model: CNN (MobileNetV2-based)
+* Framework: PyTorch
+* Classes: Healthy, Anthracnose
+* Accuracy: ~90%+
 
 ---
 
-## 📊 Model Details
+## ⚠️ Limitations
 
-* Pretrained **MobileNetV2**
-* Transfer Learning with fine-tuning
-* Data Augmentation for small dataset
-* Achieves good accuracy on test data
-
----
-
-## ⚠️ Note
-
-* Dataset is small (~60 images), so real-world accuracy may vary
-* Model may overfit due to limited data
+* Limited dataset (150 images)
+* May misclassify similar patterns
+* Works best with clear leaf images
 
 ---
 
-## 👩‍💻 Author
+## 🔮 Future Scope
+
+* Add more diseases
+* Improve dataset size
+* Mobile app integration
+* Real-time detection using camera
+
+---
+
+## 🌱 Real-World Impact
+
+This system helps farmers:
+
+* Detect disease early
+* Take preventive actions
+* Improve crop yield
+
+---
+
+## 👨‍💻 Author
 
 **Sarangi Bendre**
 
