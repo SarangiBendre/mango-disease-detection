@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Mango Disease Detection</title>
+    <title>Mango Leaf Anthracnose Disease Detection</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
 <div class="container">
     <h1>🌿 Mango Leaf Anthracnose Disease Detection</h1>
-    <p class="subtitle">AI-powered plant health analysis</p>
+    <p class="subtitle">Upload a mango leaf image to detect disease</p>
 
-    <!-- Upload Box -->
-    <div class="upload-area" id="drop-area">
-        <p>📂 Drag & Drop Image Here</p>
-        <p>or</p>
-        <input type="file" id="fileInput" hidden>
-        <button onclick="document.getElementById('fileInput').click()">Choose File</button>
+    <!-- Upload -->
+    <div class="upload-area">
+        <input type="file" id="fileInput">
+        <button onclick="uploadImage()">Upload & Analyze</button>
     </div>
 
     <!-- Preview -->
@@ -31,6 +30,19 @@
         <h2 id="resultText"></h2>
         <p id="confidenceText"></p>
     </div>
+
+    <!-- 🌿 Solution (hidden initially) -->
+    <div id="solutionCard" class="solution-card hidden">
+        <h3>🩺 Solution & Prevention</h3>
+
+        <ul>
+            <li>🍃 Remove and destroy infected leaves</li>
+            <li>🌿 Apply fungicides (copper-based sprays)</li>
+            <li>💧 Avoid excess moisture on leaves</li>
+            <li>🌞 Ensure proper sunlight & air circulation</li>
+        </ul>
+    </div>
+
 </div>
 
 <script src="/static/script.js"></script>

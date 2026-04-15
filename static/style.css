@@ -1,17 +1,17 @@
 body {
     margin: 0;
-    font-family: 'Segoe UI';
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #2c5364);
     color: white;
     text-align: center;
 }
 
 .container {
-    margin-top: 50px;
+    padding: 20px;
 }
 
 h1 {
-    font-size: 38px;
+    font-size: 26px;
 }
 
 .subtitle {
@@ -19,25 +19,27 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Upload Area */
+/* Upload box */
 .upload-area {
-    border: 2px dashed #00ffcc;
-    padding: 30px;
+    padding: 20px;
     margin: 20px auto;
-    width: 300px;
+    width: 90%;
+    max-width: 350px;
     border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
+    background: rgba(255,255,255,0.05);
 }
 
-.upload-area:hover {
-    background: rgba(255,255,255,0.05);
+/* File input */
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
 }
 
 /* Button */
 button {
-    margin-top: 10px;
-    padding: 10px 20px;
+    width: 100%;
+    padding: 10px;
     border: none;
     border-radius: 20px;
     background: #00ffcc;
@@ -48,19 +50,19 @@ button {
 
 /* Preview */
 .preview img {
-    max-width: 250px;
-    border-radius: 15px;
+    width: 90%;
+    max-width: 300px;
     margin-top: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 15px;
 }
 
 /* Loader */
 .loader {
-    border: 6px solid #f3f3f3;
-    border-top: 6px solid #00ffcc;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #00ffcc;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     margin: 20px auto;
     animation: spin 1s linear infinite;
 }
@@ -73,11 +75,12 @@ button {
     100% { transform: rotate(360deg); }
 }
 
-/* Result Card */
+/* Result */
 .result-card {
     margin-top: 20px;
     padding: 20px;
-    width: 300px;
+    width: 90%;
+    max-width: 350px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
@@ -85,10 +88,27 @@ button {
     backdrop-filter: blur(10px);
 }
 
-.result-card h2 {
-    font-size: 24px;
+/* Solution */
+.solution-card {
+    margin-top: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    text-align: left;
 }
 
-.result-card p {
-    color: #ccc;
+.solution-card h3 {
+    text-align: center;
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 20px;
+    }
 }
