@@ -3,7 +3,6 @@ import torch
 import json
 import os
 from PIL import Image
-from models.model import get_model
 from utils.predict import predict_image
 
 app = Flask(__name__)
@@ -12,9 +11,8 @@ app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
 UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# 🔥 Load model ONLY ONCE
-model = get_model()
-model.load_state_dict(torch.load("models/mango_model.pth", map_location=torch.device('cpu')))
+# 🔥 Load OPTIMIZED model (TorchScript)
+model = torch.jit.load("models/mango_model_scripted.pt")
 model.eval()
 
 # Load class names
@@ -33,20 +31,19 @@ def predict():
         if not file:
             return jsonify({"error": "No file uploaded"})
 
-        # Save file
         filepath = os.path.join(UPLOAD_FOLDER, "temp.jpg")
         file.save(filepath)
 
-        # 🔥 Resize image (IMPORTANT for speed)
+        # 🔥 Smaller image = faster
         img = Image.open(filepath).convert("RGB")
-        img = img.resize((256, 256))
+        img = img.resize((128, 128))
         img.save(filepath)
 
-        print("Prediction started...")
+        print("⚡ Fast Prediction started...")
 
         label, confidence = predict_image(filepath, model, class_names)
 
-        print("Prediction done:", label)
+        print("✅ Prediction done:", label)
 
         return jsonify({
             "label": label,
@@ -56,3 +53,7 @@ def predict():
     except Exception as e:
         print("Error:", str(e))
         return jsonify({"error": str(e)})
+
+# For local run
+if __name__ == '__main__':
+    app.run(debug=True)

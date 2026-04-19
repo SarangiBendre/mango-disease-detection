@@ -6,14 +6,12 @@ device = torch.device("cpu")
 
 def predict_image(img_path, model, class_names):
     transform = transforms.Compose([
-        transforms.Resize((128, 128)),
+        transforms.Resize((96, 96)),  # 🔥 even smaller
         transforms.ToTensor()
     ])
 
     image = Image.open(img_path).convert("RGB")
     image = transform(image).unsqueeze(0).to(device)
-
-    model.eval()
 
     with torch.no_grad():
         output = model(image)
@@ -23,7 +21,6 @@ def predict_image(img_path, model, class_names):
     label = class_names[pred.item()]
     confidence = confidence.item() * 100
 
-    # 🔥 Avoid wrong predictions
     if confidence < 60:
         return "uncertain", confidence
 
